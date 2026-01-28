@@ -1,59 +1,40 @@
-// Menú Hamburguesa para Móvil
+/* --- script.js FINAL --- */
+
+// 1. MENÚ HAMBURGUESA (MÓVIL)
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Estilo simple para mostrar el menú en móvil
-    if(navLinks.classList.contains('active')){
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '70px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'white';
-        navLinks.style.padding = '20px';
-        navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-    } else {
-        navLinks.style.display = 'none';
-    }
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        if(navLinks.classList.contains('active')){
+            // Estilos dinámicos para mostrar el menú
+            navLinks.style.display = 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = 'white';
+            navLinks.style.padding = '20px';
+            navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        } else {
+            navLinks.style.display = 'none';
+        }
+    });
+}
 
-// Scroll Suave
+// 2. SCROLL SUAVE
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) {// Menú Hamburguesa
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    if(navLinks.classList.contains('active')){
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '70px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'white';
-        navLinks.style.padding = '20px';
-        navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-    } else {
-        navLinks.style.display = 'none';
-    }
-});
-
-// Scroll Suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
         if(target) {
             target.scrollIntoView({ behavior: 'smooth' });
-            if(window.innerWidth <= 768) {
+            // Cerrar menú móvil al hacer clic (si está abierto)
+            if(window.innerWidth <= 768 && navLinks) {
                 navLinks.classList.remove('active');
                 navLinks.style.display = 'none';
             }
@@ -61,8 +42,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- SISTEMA DE TRADUCCIÓN ---
+// 3. SISTEMA DE TRADUCCIÓN (BILINGÜE)
 
+// Diccionario de textos
 const translations = {
     es: {
         nav_home: "Inicio",
@@ -112,7 +94,7 @@ const translations = {
         footer_desc: "Estudio de diseño digital.",
         footer_links: "Enlaces",
         footer_follow: "Síguenos",
-        // Placeholders
+        // Placeholders inputs
         ph_name: "Tu Nombre",
         ph_email: "Correo Electrónico",
         ph_msg: "Cuéntanos tu idea"
@@ -165,42 +147,44 @@ const translations = {
         footer_desc: "Digital design studio.",
         footer_links: "Links",
         footer_follow: "Follow Us",
-        // Placeholders
+        // Placeholders inputs
         ph_name: "Your Name",
         ph_email: "Email Address",
         ph_msg: "Tell us about your idea"
     }
 };
 
-let currentLang = 'es';
+let currentLang = 'es'; // Idioma por defecto
 
 function changeLanguage() {
-    // Alternar idioma
+    console.log("Cambiando idioma..."); // Para verificar en consola
+
+    // 1. Alternar variable de idioma
     currentLang = currentLang === 'es' ? 'en' : 'es';
     
-    // Cambiar texto del botón
-    document.getElementById('lang-text').textContent = currentLang === 'es' ? 'EN' : 'ES';
+    // 2. Cambiar texto del botón del menú
+    const langBtn = document.getElementById('lang-text');
+    if (langBtn) {
+        langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+    }
 
-    // Actualizar todos los textos con data-i18n
+    // 3. Buscar y traducir todos los textos normales
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[currentLang][key]) {
+        // Verificamos si existe la traducción para evitar errores
+        if (translations[currentLang] && translations[currentLang][key]) {
             el.innerHTML = translations[currentLang][key];
         }
     });
 
-    // Actualizar placeholders de inputs
-    document.getElementById('form_name').placeholder = translations[currentLang].ph_name;
-    document.getElementById('form_email').placeholder = translations[currentLang].ph_email;
-    document.getElementById('form_msg').placeholder = translations[currentLang].ph_msg;
+    // 4. Traducir los "placeholders" (textos dentro de los inputs)
+    // Usamos '?' (optional chaining) para que si no encuentra el input, no se rompa el código
+    const inputName = document.getElementById('form_name');
+    const inputEmail = document.getElementById('form_email');
+    const inputMsg = document.getElementById('form_msg');
+
+    if(inputName) inputName.placeholder = translations[currentLang].ph_name;
+    if(inputEmail) inputEmail.placeholder = translations[currentLang].ph_email;
+    if(inputMsg) inputMsg.placeholder = translations[currentLang].ph_msg;
 }
-            target.scrollIntoView({ behavior: 'smooth' });
-            // Cerrar menú móvil al hacer clic
-            if(window.innerWidth <= 768) {
-                navLinks.classList.remove('active');
-                navLinks.style.display = 'none';
-            }
-        }
-    });
-});
