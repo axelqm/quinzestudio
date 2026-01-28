@@ -1,0 +1,345 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --bg-color: #ffffff;
+    --text-main: #1a1a1a;
+    --text-light: #666666;
+    --accent: #000000; /* Negro puro */
+    --accent-hover: #333333;
+    --gray-bg: #f9f9f9;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita desplazamiento horizontal en móvil */
+}
+
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--accent); }
+a { text-decoration: none; transition: 0.3s; }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- 2. NAVBAR (Menú) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(255, 255, 255, 0.98);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eaeaea;
+}
+
+.logo-img { height: 55px; width: auto; }
+
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { 
+    color: var(--text-main); 
+    font-weight: 500; 
+    font-size: 0.9rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: ''; position: absolute; width: 0%; height: 2px;
+    bottom: -5px; left: 0; background-color: var(--accent); transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.btn-nav {
+    background: var(--accent); color: white !important; padding: 10px 25px; border-radius: 4px;
+}
+.btn-nav:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.btn-nav:hover::after { width: 0% !important; }
+
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--accent); }
+
+/* --- 3. HERO SECTION (Inicio) --- */
+.hero-split {
+    display: flex;
+    min-height: 90vh;
+    align-items: center;
+    padding: 0 5%;
+    gap: 50px;
+    overflow: hidden;
+}
+
+.hero-text { flex: 1; z-index: 2; padding-right: 20px; }
+.hero-image { flex: 1; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+
+.badge {
+    background: #f0f0f0; padding: 5px 15px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--text-light); margin-bottom: 20px; display: inline-block;
+}
+
+.hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
+
+.highlight { position: relative; z-index: 1; }
+.highlight::after {
+    content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 15px;
+    background: rgba(0,0,0,0.1); z-index: -1;
+}
+
+.hero-text p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; max-width: 500px; }
+
+.hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.btn-primary {
+    background: var(--accent); color: white; padding: 15px 30px; border-radius: 4px;
+    font-weight: 600; display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-primary:hover { background: var(--accent-hover); gap: 15px; }
+
+.btn-secondary {
+    padding: 15px 30px; border: 1px solid #ddd; color: var(--text-main);
+    border-radius: 4px; font-weight: 600;
+}
+.btn-secondary:hover { border-color: var(--accent); background: var(--accent); color: white; }
+
+/* ESTILOS PARA EL GRÁFICO DEL HERO (QICON) */
+.hero-graphic-container img {
+    max-width: 80%; /* Controla el tamaño del icono */
+    height: auto;
+    opacity: 0.9; /* Opacidad ligera si lo quieres sutil, pon 1 para full color */
+    animation: floatHero 6s ease-in-out infinite; /* Animación de flotación */
+}
+
+@keyframes floatHero {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- 4. STATS BAR --- */
+.stats-bar {
+    background: var(--accent); color: white; display: flex; justify-content: space-around;
+    padding: 50px 5%; flex-wrap: wrap; gap: 30px;
+}
+.stat-item { text-align: center; flex: 1; min-width: 200px; }
+.stat-item h3 i { font-size: 2rem; margin-bottom: 15px; color: white; }
+.stat-item p { font-size: 0.9rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- 5. SECCIONES GENERALES --- */
+.section { padding: 100px 5%; }
+.bg-light { background: var(--gray-bg); }
+.text-center { text-align: center; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-header { margin-bottom: 60px; }
+.section-header h2 { font-size: 2.5rem; }
+.subtitle {
+    font-size: 0.85rem; font-weight: 700; color: var(--text-light);
+    letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px;
+}
+
+/* --- 6. GRID SYSTEM (RESPONSIVO) --- */
+/* El minmax(280px) es clave para que funcione en iPhone SE y Androids pequeños */
+.services-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: white; padding: 40px; border: 1px solid #eaeaea; transition: 0.3s;
+    border-radius: 8px;
+}
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+
+.icon-box { font-size: 2rem; margin-bottom: 25px; color: var(--accent); }
+
+.service-list { margin-top: 20px; }
+.service-list li {
+    font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px; display: flex; align-items: center;
+}
+.service-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
+
+/* --- 7. PORTAFOLIO ITEMS --- */
+.work-item {
+    position: relative; overflow: hidden; border-radius: 8px;
+    cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.work-image img {
+    width: 100%; height: 350px; object-fit: cover; display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.work-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); display: flex; align-items: center;
+    justify-content: center; opacity: 0; transition: opacity 0.4s ease;
+}
+.work-content {
+    text-align: center; color: white; transform: translateY(20px); transition: transform 0.4s ease; padding: 20px;
+}
+.work-content h3 { color: white; font-size: 1.5rem; margin-bottom: 5px; }
+.work-content p { color: #ccc; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+.work-link {
+    font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid white; padding-bottom: 3px; color: white;
+}
+
+.work-item:hover .work-image img { transform: scale(1.1); }
+.work-item:hover .work-overlay { opacity: 1; }
+.work-item:hover .work-content { transform: translateY(0); }
+
+/* --- 8. SMART CARD (WALLET STYLE) --- */
+.dark-section { background: #111; color: white; }
+.dark-section h2 { color: white; }
+.dark-section p { color: #aaa; }
+.overflow-hidden { overflow: hidden; }
+
+.split-layout { display: flex; align-items: center; gap: 60px; }
+.text-content { flex: 1; z-index: 2; }
+.visual-content { flex: 1; display: flex; justify-content: center; position: relative; perspective: 1000px; }
+
+.gradient-text {
+    background: linear-gradient(90deg, #ffffff, #888888);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.badge-dark {
+    background: #222; color: #fff; padding: 5px 15px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    display: inline-block; margin-bottom: 20px; border: 1px solid #333;
+}
+.feature-list { margin: 30px 0; list-style: none; }
+.feature-list li { color: #ccc; margin-bottom: 15px; font-size: 1rem; display: flex; align-items: center; gap: 15px; }
+.btn-white {
+    background: white; color: black; padding: 15px 35px; border-radius: 4px;
+    font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+}
+.btn-white:hover { background: #e0e0e0; transform: translateY(-2px); }
+
+/* DISEÑO VISUAL WALLET PASS */
+.wallet-mockup-wrapper { position: relative; }
+.wallet-pass {
+    width: 280px; height: 450px; background: #1c1c1e; border-radius: 20px;
+    position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+    overflow: hidden; transform: rotateY(-12deg) rotateX(5deg);
+    transition: transform 0.5s ease; display: flex; flex-direction: column;
+    border-top: 5px solid #fff;
+}
+.wallet-mockup-wrapper:hover .wallet-pass { transform: rotateY(0deg) rotateX(0deg) scale(1.02); }
+
+.pass-header { padding: 25px; display: flex; justify-content: space-between; align-items: center; }
+.pass-logo { width: 70px; filter: invert(1); }
+.pass-label { font-size: 0.65rem; color: #8e8e93; font-weight: 700; letter-spacing: 1px; }
+
+.pass-body { padding: 0 25px; flex: 1; }
+.pass-row { margin-bottom: 20px; }
+.pass-row label { display: block; font-size: 0.65rem; color: #8e8e93; text-transform: uppercase; margin-bottom: 2px; }
+.pass-row .value { font-size: 1.1rem; color: white; font-weight: 500; }
+
+.pass-footer {
+    background: white; padding: 15px; text-align: center; margin: 10px; border-radius: 12px; margin-top: auto; margin-bottom: 25px;
+}
+.qr-box { font-size: 2.5rem; color: black; margin-bottom: 5px; }
+.scan-text { color: #000; font-size: 0.7rem; font-weight: 600; }
+.glow-wallet {
+    position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(66, 135, 245, 0.15) 0%, rgba(0,0,0,0) 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; border-radius: 50%;
+}
+
+/* --- 9. FOOTER & WHATSAPP --- */
+.main-footer { background: #000; color: #fff; padding: 80px 0 30px; border-top: 1px solid #222; }
+.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 50px; border-bottom: 1px solid #222; }
+.footer-logo { filter: invert(1); width: 100px; margin-bottom: 20px; }
+.footer-col h4 { color: white; margin-bottom: 20px; font-size: 1.1rem; }
+.footer-col a { display: block; color: #888; margin-bottom: 10px; font-size: 0.9rem; }
+.footer-col a:hover { color: white; padding-left: 5px; }
+.copyright { text-align: center; padding-top: 30px; color: #555; font-size: 0.85rem; }
+
+.whatsapp-float {
+    position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
+    width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 999; transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* --- 10. PROCESO & CONTACTO --- */
+.process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+.step-number { font-size: 3rem; font-weight: 700; color: #e0e0e0; display: block; margin-bottom: 10px; }
+.step:hover .step-number { color: var(--accent); transition: 0.3s; }
+
+.contact-wrapper { display: flex; gap: 60px; align-items: flex-start; }
+.contact-info, .clean-form { flex: 1; }
+.info-item { display: flex; align-items: center; gap: 15px; margin-top: 25px; font-size: 1.1rem; }
+.info-item i { color: white; }
+
+.clean-form input, .clean-form textarea, .clean-form select {
+    width: 100%; padding: 15px; margin-bottom: 20px; background: #222;
+    border: 1px solid #333; color: white; font-family: var(--font-body); font-size: 1rem;
+}
+.clean-form input:focus { border-color: white; outline: none; }
+.btn-submit {
+    width: 100%; padding: 15px; background: white; color: black; border: none;
+    font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s;
+}
+.btn-submit:hover { background: #ddd; }
+
+/* --- 11. ANIMACIONES & UTILIDADES --- */
+.fade-in { animation: fadeIn 1s ease-out; }
+.fade-in-delay { animation: fadeIn 1s ease-out 0.3s backwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 12. RESPONSIVIDAD (MEDIA QUERIES) --- */
+
+/* Tablets grandes y Laptops pequeñas */
+@media (max-width: 1024px) {
+    .hero-text h1 { font-size: 3rem; }
+    .section { padding: 60px 5%; }
+}
+
+/* Tablets y Smartphones (El cambio principal) */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 5%; }
+    .nav-links { display: none; } /* El JS se encarga de mostrarlo */
+    .hamburger { display: block; }
+    
+    .hero-split {
+        flex-direction: column; text-align: center; 
+        padding-top: 40px; height: auto; min-height: auto;
+    }
+    
+    .hero-text { padding: 0; }
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-btns { justify-content: center; }
+    
+    .hero-image { margin-top: 30px; width: 100%; }
+    .hero-graphic-container img { max-width: 60%; margin: 0 auto; } /* Icono más pequeño en móvil */
+
+    .split-layout { flex-direction: column; gap: 40px; }
+    .text-content { text-align: center; }
+    .feature-list { display: inline-block; text-align: left; }
+    
+    .contact-wrapper { flex-direction: column; gap: 40px; }
+    .footer-content { text-align: center; }
+    .footer-logo { margin: 0 auto 15px; }
+    
+    /* Ajuste Wallet en móvil */
+    .wallet-pass { width: 260px; height: 420px; transform: rotateY(0) rotateX(0); }
+}
+/* --- ESTILO PARA EL GRÁFICO DEL HÉROE (OPCIÓN 2) --- */
+.hero-graphic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.hero-graphic-container img {
+    width: 70%; /* Ocupa un buen espacio */
+    height: auto;
+    opacity: 0.08; /* Muy, muy sutil */
+    filter: grayscale(100%); /* Asegura que sea blanco y negro */
+}
