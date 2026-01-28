@@ -19,7 +19,7 @@
             <li><a href="#servicios" data-i18n="nav_services">Servicios</a></li>
             <li><a href="#tarjeta-digital" data-i18n="nav_card">Smart Card</a></li> 
             <li><a href="#portafolio" data-i18n="nav_work">Work</a></li>
-            <li><a href="#contacto" class="btn-nav" data-i18n="nav_contact">Contacto</a></li>
+            <li><a href="#contacto" class="btn-nav" data-i18n="nav_quote">Cotizar</a></li>
             <li class="lang-switch" onclick="changeLanguage()">
                 <i class="fas fa-globe"></i> <span id="lang-text">EN</span>
             </li>
@@ -114,7 +114,7 @@
                         <div class="pass-body">
                             <div class="pass-row">
                                 <label data-i18n="pass_label_name">NOMBRE</label>
-                                <span class="value">Mario Silva</span>
+                                <span class="value">Axel Quiñones</span>
                             </div>
                             <div class="pass-row">
                                 <label data-i18n="pass_label_role">PUESTO</label>
@@ -183,29 +183,54 @@
     </section>
 
     <section id="contacto" class="section dark-section">
-        <div class="container contact-wrapper">
-            <div class="contact-info">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 30px;">
                 <h2 data-i18n="contact_title">¿Tienes un proyecto?</h2>
-                <p data-i18n="contact_desc">Hagamos algo increíble juntos. Cuéntanos tu idea.</p>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i><span>info@quinzestudio.com</span>
-                </div>
-                <div class="info-item">
-                    <i class="fab fa-whatsapp"></i><span>+52 477 663 6387</span>
-                </div>
+                <p data-i18n="contact_desc" style="color: #aaa;">Hagamos algo increíble juntos.</p>
             </div>
-            <form class="clean-form">
-                <div class="form-group">
-                    <input type="text" id="form_name" placeholder="Tu Nombre" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="form_email" placeholder="Correo Electrónico" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="form_msg" rows="4" placeholder="Cuéntanos tu idea"></textarea>
-                </div>
-                <button type="submit" class="btn-submit" data-i18n="contact_btn">Enviar Mensaje</button>
-            </form>
+            
+            <div class="modern-form-container fade-in-delay">
+                <form class="glass-form">
+                    <h3 data-i18n="contact_form_title">Start a Project</h3>
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" id="wa_name" required placeholder=" ">
+                            <label for="wa_name" data-i18n="ph_name">Tu Nombre</label>
+                            <i class="fas fa-user input-icon"></i>
+                            <div class="input-highlight"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <select id="wa_service" required>
+                                <option value="" disabled selected></option> 
+                                <option value="Sitio Web" data-i18n="opt_web">Página Web</option>
+                                <option value="Tarjeta Digital" data-i18n="opt_card">Tarjeta Digital (Wallet)</option>
+                                <option value="E-Commerce" data-i18n="opt_ecom">Tienda Online</option>
+                                <option value="Otro" data-i18n="opt_other">Otro Proyecto</option>
+                            </select>
+                            <label for="wa_service" class="select-label" data-i18n="ph_service">Tipo de Proyecto</label>
+                            <i class="fas fa-code-branch input-icon"></i>
+                            <div class="input-highlight"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group textarea-group">
+                        <textarea id="wa_message" rows="1" required placeholder=" "></textarea>
+                        <label for="wa_message" data-i18n="ph_msg">Cuéntanos tu idea</label>
+                        <i class="fas fa-comment-dots input-icon"></i>
+                        <div class="input-highlight"></div>
+                    </div>
+                    
+                    <button type="button" onclick="sendToWhatsapp()" class="btn-glow">
+                        <span data-i18n="contact_btn">Enviar por WhatsApp</span>
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                </form>
+                
+                <div class="form-orb orb-1"></div>
+                <div class="form-orb orb-2"></div>
+            </div>
         </div>
     </section>
 
@@ -232,10 +257,6 @@
             &copy; 2026 Quinze Studio.
         </div>
     </footer>
-
-    <a href="https://wa.me/524776636387" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <script src="script.js"></script>
 </body>

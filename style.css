@@ -17,7 +17,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden; /* Evita desplazamiento horizontal */
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--accent); }
@@ -218,7 +218,8 @@ img { max-width: 100%; height: auto; display: block; }
 .gradient-text {
     background: linear-gradient(90deg, #ffffff, #888888);
     background-clip: text;
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .badge-dark {
     background: #222; color: #fff; padding: 5px 15px; border-radius: 50px;
@@ -263,7 +264,7 @@ img { max-width: 100%; height: auto; display: block; }
     top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; border-radius: 50%;
 }
 
-/* --- 9. FOOTER & WHATSAPP --- */
+/* --- 9. FOOTER --- */
 .main-footer { background: #000; color: #fff; padding: 80px 0 30px; border-top: 1px solid #222; }
 .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 50px; border-bottom: 1px solid #222; }
 .footer-logo { filter: invert(1); width: 100px; margin-bottom: 20px; }
@@ -272,39 +273,170 @@ img { max-width: 100%; height: auto; display: block; }
 .footer-col a:hover { color: white; padding-left: 5px; }
 .copyright { text-align: center; padding-top: 30px; color: #555; font-size: 0.85rem; }
 
-.whatsapp-float {
-    position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
-    width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; font-size: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    z-index: 999; transition: 0.3s;
-}
-.whatsapp-float:hover { transform: scale(1.1); }
-
-/* --- 10. PROCESO & CONTACTO --- */
-.process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-.step-number { font-size: 3rem; font-weight: 700; color: #e0e0e0; display: block; margin-bottom: 10px; }
-.step:hover .step-number { color: var(--accent); transition: 0.3s; }
-
-.contact-wrapper { display: flex; gap: 60px; align-items: flex-start; }
-.contact-info, .clean-form { flex: 1; }
-.info-item { display: flex; align-items: center; gap: 15px; margin-top: 25px; font-size: 1.1rem; }
-.info-item i { color: white; }
-
-.clean-form input, .clean-form textarea, .clean-form select {
-    width: 100%; padding: 15px; margin-bottom: 20px; background: #222;
-    border: 1px solid #333; color: white; font-family: var(--font-body); font-size: 1rem;
-}
-.clean-form input:focus { border-color: white; outline: none; }
-.btn-submit {
-    width: 100%; padding: 15px; background: white; color: black; border: none;
-    font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s;
-}
-.btn-submit:hover { background: #ddd; }
-
-/* --- 11. ANIMACIONES & UTILIDADES --- */
+/* --- 10. ANIMACIONES & UTILIDADES --- */
 .fade-in { animation: fadeIn 1s ease-out; }
 .fade-in-delay { animation: fadeIn 1s ease-out 0.3s backwards; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+/* --- 11. FORMULARIO ULTRA-MODERNO (HORIZONTAL & COMPACTO) --- */
+
+.modern-form-container {
+    position: relative;
+    padding: 0;
+    border-radius: 20px;
+    max-width: 900px; /* Ancho máximo extendido */
+    margin: 0 auto;   /* Centrado */
+    z-index: 1;
+}
+
+/* Efecto de Cristal Oscuro */
+.glass-form {
+    position: relative;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px; 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+.glass-form h3 {
+    color: white;
+    margin-bottom: 35px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Layout Horizontal para Escritorio */
+.form-row {
+    display: flex;
+    gap: 30px; /* Espacio entre Nombre y Servicio */
+}
+
+/* Grupos de Inputs */
+.input-group {
+    position: relative;
+    margin-bottom: 25px; 
+    flex: 1; /* Ocupa el espacio disponible */
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 20px 12px 45px; 
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.input-group textarea {
+    resize: none;
+    height: 80px; 
+}
+
+/* CORRECCIÓN MENÚ DESPLEGABLE (FONDO OSCURO) */
+.input-group select option {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* ETIQUETAS E ICONOS */
+.input-group label {
+    position: absolute;
+    left: 45px;
+    top: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    
+    /* CORRECCIÓN FLECHA: Aseguramos que la etiqueta ocupe el ancho para posicionar la flecha al final */
+    width: 100%; 
+    padding-right: 30px; /* Espacio para que el texto no toque la flecha */
+    box-sizing: border-box;
+}
+
+.input-group .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* CORRECCIÓN FLECHA: Posicionada a la derecha absoluta */
+.input-group select { appearance: none; cursor: pointer; }
+.input-group select + label::after {
+    content: '\f078'; 
+    font-family: 'Font Awesome 5 Free'; 
+    font-weight: 900;
+    position: absolute; 
+    right: 20px; /* Separado a la derecha */
+    top: 2px; 
+    font-size: 0.8rem; 
+    pointer-events: none; 
+    color: rgba(255,255,255,0.6);
+}
+.input-group select:valid ~ .select-label::after { opacity: 0; }
+
+/* Efectos Focus */
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus,
+.input-group input:not(:placeholder-shown), .input-group select:valid, .input-group textarea:not(:placeholder-shown) {
+    border-bottom-color: transparent;
+}
+
+/* Movimiento de etiqueta */
+.input-group input:focus ~ label, .input-group select:focus ~ label, .input-group textarea:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label, .input-group select:valid ~ .select-label, .input-group textarea:not(:placeholder-shown) ~ label {
+    top: -10px; left: 15px; font-size: 0.8rem; color: white; font-weight: 600;
+}
+
+.input-group input:focus ~ .input-icon, .input-group select:focus ~ .input-icon, .input-group textarea:focus ~ .input-icon {
+    color: white;
+}
+
+/* Línea brillante */
+.input-highlight {
+    position: absolute; bottom: 0; left: 0; height: 1px; width: 0;
+    background: white; transition: all 0.4s ease;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+.input-group input:focus ~ .input-highlight, .input-group select:focus ~ .input-highlight, .input-group textarea:focus ~ .input-highlight {
+    width: 100%;
+}
+
+/* Botón Compacto */
+.btn-glow {
+    width: 100%; padding: 15px;
+    background: white; border: none; border-radius: 10px;
+    color: black; font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    position: relative; overflow: hidden; transition: all 0.3s ease;
+    box-shadow: 0 5px 15px -5px rgba(255, 255, 255, 0.3);
+}
+.btn-glow i { font-size: 1.2rem; }
+.btn-glow:hover { transform: translateY(-2px); background: #f0f0f0; }
+
+/* Orbes Sutiles */
+.form-orb { position: absolute; border-radius: 50%; filter: blur(60px); z-index: 0; opacity: 0.1; }
+.orb-1 { width: 200px; height: 200px; background: white; top: -50px; left: -50px; }
+.orb-2 { width: 150px; height: 150px; background: #888; bottom: -40px; right: -40px; }
+
 
 /* --- 12. RESPONSIVIDAD (MEDIA QUERIES) --- */
 
@@ -314,13 +446,12 @@ img { max-width: 100%; height: auto; display: block; }
     .section { padding: 60px 5%; }
 }
 
-/* SMARTPHONES Y TABLETS (El cambio principal) */
+/* SMARTPHONES Y TABLETS */
 @media (max-width: 768px) {
     .navbar { padding: 15px 5%; }
     
     /* 1. MENÚ MÓVIL CON ANIMACIÓN SUAVE */
     .nav-links {
-        /* Estado inicial (Oculto) */
         display: flex; /* Siempre en DOM pero oculto */
         flex-direction: column;
         position: absolute;
@@ -335,16 +466,15 @@ img { max-width: 100%; height: auto; display: block; }
         z-index: 999;
         
         opacity: 0;
-        visibility: hidden; /* Evita clicks fantasma */
-        transform: translateY(-20px); /* Empieza desplazado arriba */
+        visibility: hidden;
+        transform: translateY(-20px);
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    /* Estado ACTIVO (Clase agregada por JS) */
     .nav-links.active {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0); /* Se desliza a su lugar */
+        transform: translateY(0);
     }
 
     .hamburger { display: block; z-index: 1001; }
@@ -372,45 +502,31 @@ img { max-width: 100%; height: auto; display: block; }
     
     .wallet-pass { width: 260px; height: 420px; transform: rotateY(0) rotateX(0); }
 
-    /* 4. SOLUCIÓN PORTAFOLIO EN MÓVIL */
-    /* Tarjeta cambia a fondo negro, texto siempre visible abajo */
+    /* 4. SOLUCIÓN PORTAFOLIO EN MÓVIL (Info siempre visible) */
     .work-item {
         height: auto; 
         display: flex; 
         flex-direction: column;
         background-color: #111; 
     }
-
     .work-image img {
         height: 250px; 
         width: 100%;
     }
-
     .work-overlay {
-        position: relative; 
-        opacity: 1; 
-        background: #111;
-        height: auto;
-        padding: 25px 15px;
-        inset: auto;
+        position: relative; opacity: 1; background: #111;
+        height: auto; padding: 25px 15px; inset: auto;
     }
-
-    .work-content {
-        transform: translateY(0); 
-        padding: 0;
-    }
-    
+    .work-content { transform: translateY(0); padding: 0; }
     .work-content h3 { font-size: 1.3rem; }
     .work-content p { font-size: 0.85rem; margin-bottom: 15px; }
-    
-    /* Enlace estilo botón para que sea fácil de tocar */
     .work-link {
-        display: inline-block;
-        background: #222;
-        padding: 10px 20px;
-        border-radius: 50px;
-        border: 1px solid #333;
-        text-decoration: none;
-        margin-top: 5px;
+        display: inline-block; background: #222; padding: 10px 20px;
+        border-radius: 50px; border: 1px solid #333; text-decoration: none; margin-top: 5px;
     }
+
+    /* 5. FORMULARIO EN MÓVIL (Stacking) */
+    .form-row { flex-direction: column; gap: 0; }
+    .glass-form { padding: 30px 20px; }
+    .input-group textarea { height: 100px; }
 }
