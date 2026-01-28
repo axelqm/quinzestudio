@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Quinze Studio | Agencia Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinze Studio | Agencia Digital</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,11 +15,14 @@
             <img src="QUINZE STUDIO.png" alt="Quinze Studio" class="logo-img">
         </div>
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#tarjeta-digital">Smart Card</a></li> 
-            <li><a href="#portafolio">Work</a></li>
-            <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+            <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+            <li><a href="#servicios" data-i18n="nav_services">Servicios</a></li>
+            <li><a href="#tarjeta-digital" data-i18n="nav_card">Smart Card</a></li> 
+            <li><a href="#portafolio" data-i18n="nav_work">Work</a></li>
+            <li><a href="#contacto" class="btn-nav" data-i18n="nav_contact">Contacto</a></li>
+            <li class="lang-switch" onclick="changeLanguage()">
+                <i class="fas fa-globe"></i> <span id="lang-text">EN</span>
+            </li>
         </ul>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -27,71 +31,58 @@
 
     <header id="inicio" class="hero-split">
         <div class="hero-text fade-in">
-            <span class="badge">Nuevos Espacios Digitales</span>
-            <h1>Diseño que <br> <span class="highlight">trasciende.</span></h1>
-            <p>En Quinze fusionamos estrategia y minimalismo para construir marcas que lideran su sector. No hacemos solo webs, creamos activos digitales.</p>
+            <span class="badge" data-i18n="hero_badge">Nuevos Espacios Digitales</span>
+            <h1 data-i18n="hero_title">Diseño que <br> <span class="highlight">trasciende.</span></h1>
+            <p data-i18n="hero_desc">En Quinze fusionamos estrategia y minimalismo para construir marcas que lideran su sector. No hacemos solo webs, creamos activos digitales.</p>
             <div class="hero-btns">
-                <a href="#contacto" class="btn-primary">Iniciar Proyecto <i class="fas fa-arrow-right"></i></a>
-                <a href="#portafolio" class="btn-secondary">Ver Portafolio</a>
+                <a href="#contacto" class="btn-primary" data-i18n="hero_btn_start">Iniciar Proyecto <i class="fas fa-arrow-right"></i></a>
+                <a href="#portafolio" class="btn-secondary" data-i18n="hero_btn_portfolio">Ver Portafolio</a>
             </div>
         </div>
-        
         <div class="hero-image fade-in-delay">
-    <div class="hero-graphic-container">
-        <img src="img/QICON.png" alt="Quinze Icon Graphic">
-    </div>
-</div>
+            <div class="hero-graphic-container">
+                <img src="img/QICON.png" alt="Quinze Icon Graphic">
+            </div>
+        </div>
     </header>
 
     <section class="stats-bar">
         <div class="stat-item">
             <h3><i class="fas fa-pencil-ruler"></i></h3>
-            <p>Diseño 100% A Medida</p>
+            <p data-i18n="stats_custom">Diseño 100% A Medida</p>
         </div>
         <div class="stat-item">
             <h3><i class="fas fa-user-shield"></i></h3>
-            <p>Trato Directo</p>
+            <p data-i18n="stats_direct">Trato Directo</p>
         </div>
         <div class="stat-item">
             <h3><i class="fas fa-rocket"></i></h3>
-            <p>Entrega Ágil</p>
+            <p data-i18n="stats_agile">Entrega Ágil</p>
         </div>
     </section>
 
     <section id="servicios" class="section">
         <div class="container">
             <div class="section-header text-center">
-                <span class="subtitle">EXPERTISE</span>
-                <h2>Soluciones a medida</h2>
+                <span class="subtitle" data-i18n="services_subtitle">EXPERTISE</span>
+                <h2 data-i18n="services_title">Soluciones a medida</h2>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Desarrollo Web</h3>
-                    <p>Sitios rápidos, seguros y optimizados para Google (SEO). Desde landing pages hasta portales corporativos.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Diseño Responsive</li>
-                        <li><i class="fas fa-check"></i> Optimización SEO</li>
-                    </ul>
+                    <h3 data-i18n="serv_web_title">Desarrollo Web</h3>
+                    <p data-i18n="serv_web_desc">Sitios rápidos, seguros y optimizados para Google (SEO). Desde landing pages hasta portales corporativos.</p>
                 </div>
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-shopping-bag"></i></div>
-                    <h3>E-Commerce</h3>
-                    <p>Transformamos visitantes en compradores. Tiendas en línea intuitivas y seguras.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Pasarelas de Pago</li>
-                        <li><i class="fas fa-check"></i> Gestión de Inventario</li>
-                    </ul>
+                    <h3 data-i18n="serv_ecom_title">E-Commerce</h3>
+                    <p data-i18n="serv_ecom_desc">Transformamos visitantes en compradores. Tiendas en línea intuitivas y seguras.</p>
                 </div>
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Wallet Cards</h3>
-                    <p>Tarjetas de presentación digitales compatibles con Apple y Google Wallet.</p>
-                    <ul class="service-list">
-                        <li><i class="fas fa-check"></i> Sin aplicaciones</li>
-                        <li><i class="fas fa-check"></i> 100% Digitales</li>
-                    </ul>
+                    <h3 data-i18n="serv_card_title">Wallet Cards</h3>
+                    <p data-i18n="serv_card_desc">Tarjetas de presentación digitales compatibles con Apple y Google Wallet.</p>
                 </div>
             </div>
         </div>
@@ -100,17 +91,17 @@
     <section id="tarjeta-digital" class="section dark-section overflow-hidden">
         <div class="container split-layout">
             <div class="text-content fade-in">
-                <span class="badge-dark">Sin Plásticos.</span>
-                <h2>Directo al bolsillo <br><span class="gradient-text">de tu cliente.</span></h2>
-                <p>Olvídate de imprimir. Diseñamos tu credencial digital lista para guardarse en <strong>Apple Wallet</strong> y <strong>Google Wallet</strong>. Tu cliente te tendrá a un clic de distancia, siempre.</p>
+                <span class="badge-dark" data-i18n="card_badge">Sin Plásticos.</span>
+                <h2 data-i18n="card_title">Directo al bolsillo <br><span class="gradient-text">de tu cliente.</span></h2>
+                <p data-i18n="card_desc">Olvídate de imprimir. Diseñamos tu credencial digital lista para guardarse en Apple Wallet y Google Wallet.</p>
                 
                 <ul class="feature-list">
-                    <li><i class="fab fa-apple"></i> Compatible con iPhone</li>
-                    <li><i class="fab fa-android"></i> Compatible con Android</li>
-                    <li><i class="fas fa-ban"></i> Cero gastos de impresión</li>
+                    <li data-i18n="card_feat_1"><i class="fab fa-apple"></i> Compatible con iPhone</li>
+                    <li data-i18n="card_feat_2"><i class="fab fa-android"></i> Compatible con Android</li>
+                    <li data-i18n="card_feat_3"><i class="fas fa-ban"></i> Cero gastos de impresión</li>
                 </ul>
 
-                <a href="#contacto" class="btn-white">Diseñar mi Pass <i class="fas fa-arrow-right"></i></a>
+                <a href="#contacto" class="btn-white" data-i18n="card_btn">Diseñar mi Pass <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="visual-content">
@@ -122,19 +113,17 @@
                         </div>
                         <div class="pass-body">
                             <div class="pass-row">
-                                <label>NOMBRE</label>
-                                <span class="value">Alberto Silva</span>
+                                <label data-i18n="pass_label_name">NOMBRE</label>
+                                <span class="value">Mario Silva</span>
                             </div>
                             <div class="pass-row">
-                                <label>PUESTO</label>
+                                <label data-i18n="pass_label_role">PUESTO</label>
                                 <span class="value">CEO & Founder</span>
                             </div>
                         </div>
                         <div class="pass-footer">
-                            <div class="qr-box">
-                                <i class="fas fa-qrcode"></i>
-                            </div>
-                            <p class="scan-text">Escanea para guardar</p>
+                            <div class="qr-box"><i class="fas fa-qrcode"></i></div>
+                            <p class="scan-text" data-i18n="pass_scan">Escanea para guardar</p>
                         </div>
                     </div>
                     <div class="glow-wallet"></div>
@@ -146,85 +135,48 @@
     <section id="portafolio" class="section">
         <div class="container">
             <div class="section-header text-center">
-                <span class="subtitle">SELECTED WORK</span>
-                <h2>Proyectos Recientes</h2>
+                <span class="subtitle" data-i18n="work_subtitle">SELECTED WORK</span>
+                <h2 data-i18n="work_title">Proyectos Recientes</h2>
             </div>
 
             <div class="portfolio-grid">
-                
                 <div class="work-item">
                     <div class="work-image">
-                        <img src="img/LOGOICON.png" 
-                             alt="Clínica Dental Dra. Brenda Parra" 
-                             style="object-fit: contain; padding: 50px; background-color: #fff;">
+                        <img src="img/LOGOICON.png" alt="Dra. Brenda" style="object-fit: contain; padding: 50px; background-color: #fff;">
                     </div>
                     <div class="work-overlay">
                         <div class="work-content">
                             <h3>Dra. Brenda Parra</h3>
-                            <p>Caso de Éxito / Sitio Web</p>
-                            <a href="https://drabrendaparra.com/" target="_blank" class="work-link">Ver Resultado <i class="fas fa-external-link-alt"></i></a>
+                            <p data-i18n="work_1_desc">Caso de Éxito / Sitio Web</p>
+                            <a href="https://drabrendaparra.com/" target="_blank" class="work-link" data-i18n="work_btn_view">Ver Resultado <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
-
                 <div class="work-item">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Desarrollo a Medida">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Code">
                     </div>
                     <div class="work-overlay">
                         <div class="work-content">
-                            <h3>Desarrollo a Medida</h3>
-                            <p>Sin Plantillas Genéricas</p>
-                            <span class="work-link" style="font-size: 0.9rem; font-weight: 400;">Tu marca es única, tu código también.</span>
+                            <h3 data-i18n="work_2_title">Desarrollo a Medida</h3>
+                            <p data-i18n="work_2_desc">Sin Plantillas Genéricas</p>
+                            <span class="work-link" data-i18n="work_2_sub">Tu marca es única.</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="work-item">
                     <div class="work-image">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Espacio Disponible">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Space">
                     </div>
                     <a href="#contacto" style="display: block; height: 100%;">
                         <div class="work-overlay" style="opacity: 1; background: rgba(0,0,0,0.6);">
                             <div class="work-content" style="transform: translateY(0);">
-                                <h3>¿Tu Proyecto Aquí?</h3>
-                                <p>Agenda Abierta 2026</p>
-                                <span class="btn-primary" style="font-size: 0.8rem; padding: 10px 20px;">Cotizar Ahora</span>
+                                <h3 data-i18n="work_3_title">¿Tu Proyecto Aquí?</h3>
+                                <p data-i18n="work_3_desc">Agenda Abierta 2026</p>
+                                <span class="btn-primary" style="font-size: 0.8rem; padding: 10px 20px;" data-i18n="work_3_btn">Cotizar Ahora</span>
                             </div>
                         </div>
                     </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="proceso" class="section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">WORKFLOW</span>
-                <h2>Cómo trabajamos</h2>
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <span class="step-number">01</span>
-                    <h4>Descubrimiento</h4>
-                    <p>Analizamos tu marca y objetivos.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">02</span>
-                    <h4>Diseño</h4>
-                    <p>Creamos la estructura visual.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">03</span>
-                    <h4>Desarrollo</h4>
-                    <p>Programamos tu sitio a medida.</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">04</span>
-                    <h4>Lanzamiento</h4>
-                    <p>Tu web lista para el mundo.</p>
                 </div>
             </div>
         </div>
@@ -233,28 +185,26 @@
     <section id="contacto" class="section dark-section">
         <div class="container contact-wrapper">
             <div class="contact-info">
-                <h2>¿Tienes un proyecto?</h2>
-                <p>Hagamos algo increíble juntos.</p>
+                <h2 data-i18n="contact_title">¿Tienes un proyecto?</h2>
+                <p data-i18n="contact_desc">Hagamos algo increíble juntos. Cuéntanos tu idea.</p>
                 <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>info@quinzestudio.com</span>
+                    <i class="fas fa-envelope"></i><span>info@quinzestudio.com</span>
                 </div>
                 <div class="info-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>+52 477 663 6387</span>
+                    <i class="fab fa-whatsapp"></i><span>+52 477 663 6387</span>
                 </div>
             </div>
             <form class="clean-form">
                 <div class="form-group">
-                    <input type="text" placeholder="Tu Nombre" required>
+                    <input type="text" id="form_name" placeholder="Tu Nombre" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Correo Electrónico" required>
+                    <input type="email" id="form_email" placeholder="Correo Electrónico" required>
                 </div>
                 <div class="form-group">
-                    <textarea rows="4" placeholder="Cuéntanos tu idea"></textarea>
+                    <textarea id="form_msg" rows="4" placeholder="Cuéntanos tu idea"></textarea>
                 </div>
-                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                <button type="submit" class="btn-submit" data-i18n="contact_btn">Enviar Mensaje</button>
             </form>
         </div>
     </section>
@@ -263,24 +213,23 @@
         <div class="footer-content container">
             <div class="footer-col">
                 <img src="img/QICON.png" alt="Quinze" class="footer-logo"> 
-                <p>Estudio de diseño digital.</p>
+                <p data-i18n="footer_desc">Estudio de diseño digital.</p>
             </div>
             <div class="footer-col">
-                <h4>Enlaces</h4>
-                <a href="#inicio">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#portafolio">Portafolio</a>
+                <h4 data-i18n="footer_links">Enlaces</h4>
+                <a href="#inicio" data-i18n="nav_home">Inicio</a>
+                <a href="#servicios" data-i18n="nav_services">Servicios</a>
+                <a href="#portafolio" data-i18n="nav_work">Portafolio</a>
             </div>
             <div class="footer-col">
-                <h4>Síguenos</h4>
+                <h4 data-i18n="footer_follow">Síguenos</h4>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/quinzestudio15/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2025 Quinze Studio.
+            &copy; 2026 Quinze Studio.
         </div>
     </footer>
 
