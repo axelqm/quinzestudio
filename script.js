@@ -69,7 +69,7 @@ const translations = {
         contact_form_title: "Inicia un Proyecto", contact_btn: "Enviar por WhatsApp",
         footer_desc: "Estudio de diseño digital.", footer_links: "Enlaces", footer_follow: "Síguenos",
         
-        // ETIQUETAS DEL FORMULARIO Y OPCIONES
+        // FORMULARIO (Etiquetas y Opciones)
         ph_name: "Tu Nombre", 
         ph_service: "Tipo de Proyecto", 
         ph_msg: "Cuéntanos tu idea",
@@ -89,7 +89,7 @@ const translations = {
         serv_ecom_title: "E-Commerce", serv_ecom_desc: "We turn visitors into buyers. Intuitive and secure online stores.",
         serv_card_title: "Wallet Cards", serv_card_desc: "Digital business cards compatible with Apple and Google Wallet.",
         card_badge: "Plastic Free.", card_title: "Straight to your <br><span class='gradient-text'>client's pocket.</span>",
-        card_desc: "Forget printing. Digital credentials ready for Apple and Google Wallet.",
+        card_desc: "Forget printing. We design your digital credential ready to be saved in Apple Wallet and Google Wallet.",
         card_feat_1: "<i class='fab fa-apple'></i> iPhone Compatible", card_feat_2: "<i class='fab fa-android'></i> Android Compatible",
         card_feat_3: "<i class='fas fa-ban'></i> Zero printing costs", card_btn: "Design my Pass <i class='fas fa-arrow-right'></i>",
         pass_label_name: "NAME", pass_label_role: "ROLE", pass_scan: "Scan to save",
@@ -101,7 +101,7 @@ const translations = {
         contact_form_title: "Start a Project", contact_btn: "Send via WhatsApp",
         footer_desc: "Digital design studio.", footer_links: "Links", footer_follow: "Follow Us",
         
-        // FORM LABELS AND OPTIONS TRANSLATED
+        // FORM LABELS AND OPTIONS
         ph_name: "Your Name", 
         ph_service: "Project Type", 
         ph_msg: "Tell us about your idea",
@@ -115,14 +115,14 @@ const translations = {
 let currentLang = 'es'; // Idioma por defecto
 
 function changeLanguage() {
-    // 1. Cambiar variable
+    // 1. Alternar idioma
     currentLang = currentLang === 'es' ? 'en' : 'es';
     
-    // 2. Cambiar botón
+    // 2. Cambiar texto del botón del menú
     const langBtn = document.getElementById('lang-text');
     if (langBtn) langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
 
-    // 3. Traducir textos generales (innerHTML)
+    // 3. Traducir textos visibles (etiquetas, títulos, opciones del select)
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -131,8 +131,7 @@ function changeLanguage() {
         }
     });
 
-    // 4. Traducir Placeholders (Inputs invisibles)
-    // El label flotante se encarga de lo visual, pero mantenemos esto por accesibilidad
+    // 4. Traducir Placeholders (Texto gris dentro de los inputs)
     const inputName = document.getElementById('wa_name');
     const inputMsg = document.getElementById('wa_message');
 
@@ -153,12 +152,13 @@ function sendToWhatsapp() {
         return;
     }
 
-    // Número y Mensaje
+    // Tu número de teléfono
     let phoneNumber = "524776636387";
     
     // Formato del mensaje para WhatsApp
+    // %0A es el código para "Salto de línea"
     let text = `Hola Quinze Studio, soy *${name}*.%0A%0AMe interesa un proyecto de: *${service}*.%0A%0A${message}`;
     
-    // Abrir WhatsApp
+    // Abrir WhatsApp en nueva pestaña
     window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
 }

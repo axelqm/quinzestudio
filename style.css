@@ -296,7 +296,7 @@ img { max-width: 100%; height: auto; display: block; }
     background: rgba(20, 20, 20, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 40px; 
+    padding: 40px; /* Padding reducido para menos altura */
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
@@ -321,7 +321,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* Grupos de Inputs */
 .input-group {
     position: relative;
-    margin-bottom: 25px; 
+    margin-bottom: 25px; /* Margen reducido */
     flex: 1; /* Ocupa el espacio disponible */
 }
 
@@ -329,7 +329,7 @@ img { max-width: 100%; height: auto; display: block; }
 .input-group select,
 .input-group textarea {
     width: 100%;
-    padding: 12px 20px 12px 45px; 
+    padding: 12px 40px 12px 45px; /* Padding ajustado para flecha */
     background: transparent;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -344,16 +344,24 @@ img { max-width: 100%; height: auto; display: block; }
 
 .input-group textarea {
     resize: none;
-    height: 80px; 
+    height: 80px; /* Altura reducida del mensaje */
 }
 
-/* CORRECCIÓN MENÚ DESPLEGABLE (FONDO OSCURO) */
+/* CORRECCIÓN CRÍTICA: ELIMINAR FLECHA DOBLE */
+.input-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Opciones con fondo oscuro */
 .input-group select option {
     background-color: #1a1a1a;
     color: white;
 }
 
-/* ETIQUETAS E ICONOS */
+/* Etiquetas e Iconos */
 .input-group label {
     position: absolute;
     left: 45px;
@@ -362,11 +370,7 @@ img { max-width: 100%; height: auto; display: block; }
     pointer-events: none;
     transition: all 0.3s ease;
     font-size: 0.95rem;
-    
-    /* CORRECCIÓN FLECHA: Aseguramos que la etiqueta ocupe el ancho para posicionar la flecha al final */
-    width: 100%; 
-    padding-right: 30px; /* Espacio para que el texto no toque la flecha */
-    box-sizing: border-box;
+    width: 100%;
 }
 
 .input-group .input-icon {
@@ -378,14 +382,13 @@ img { max-width: 100%; height: auto; display: block; }
     transition: all 0.3s ease;
 }
 
-/* CORRECCIÓN FLECHA: Posicionada a la derecha absoluta */
-.input-group select { appearance: none; cursor: pointer; }
+/* FLECHA PERSONALIZADA */
 .input-group select + label::after {
     content: '\f078'; 
     font-family: 'Font Awesome 5 Free'; 
     font-weight: 900;
     position: absolute; 
-    right: 20px; /* Separado a la derecha */
+    right: 20px; /* Separada a la derecha */
     top: 2px; 
     font-size: 0.8rem; 
     pointer-events: none; 
