@@ -17,7 +17,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden; /* Evita desplazamiento horizontal en móvil */
+    overflow-x: hidden; /* Evita desplazamiento horizontal */
 }
 
 h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--accent); }
@@ -62,6 +62,19 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn-nav:hover { background: var(--accent-hover); transform: translateY(-2px); }
 .btn-nav:hover::after { width: 0% !important; }
+
+/* Botón de Idioma */
+.lang-switch {
+    cursor: pointer;
+    border: 1px solid #eaeaea;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    transition: 0.3s;
+}
+.lang-switch:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
 .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--accent); }
 
@@ -110,7 +123,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ESTILOS PARA EL GRÁFICO DEL HERO (QICON) */
 .hero-graphic-container img {
-    max-width: 80%; /* Controla el tamaño del icono */
+    max-width: 80%;
     height: auto;
     opacity: 0.9;
     animation: floatHero 6s ease-in-out infinite;
@@ -143,7 +156,7 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px;
 }
 
-/* --- 6. GRID SYSTEM --- */
+/* --- 6. GRID SYSTEM (Responsivo desde 280px) --- */
 .services-grid, .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -164,7 +177,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .service-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
 
-/* --- 7. PORTAFOLIO ITEMS (Estilo base escritorio) --- */
+/* --- 7. PORTAFOLIO ITEMS (Base Desktop) --- */
 .work-item {
     position: relative; overflow: hidden; border-radius: 8px;
     cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
@@ -204,6 +217,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .gradient-text {
     background: linear-gradient(90deg, #ffffff, #888888);
+    background-clip: text;
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .badge-dark {
@@ -294,23 +308,52 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* --- 12. RESPONSIVIDAD (MEDIA QUERIES) --- */
 
-/* Tablets grandes y Laptops pequeñas */
+/* Tablets grandes */
 @media (max-width: 1024px) {
     .hero-text h1 { font-size: 3rem; }
     .section { padding: 60px 5%; }
 }
 
-/* Tablets y Smartphones (CRÍTICO PARA MÓVIL) */
+/* SMARTPHONES Y TABLETS (El cambio principal) */
 @media (max-width: 768px) {
     .navbar { padding: 15px 5%; }
-    .nav-links { display: none; } /* El JS se encarga de mostrarlo */
-    .hamburger { display: block; }
     
+    /* 1. MENÚ MÓVIL CON ANIMACIÓN SUAVE */
+    .nav-links {
+        /* Estado inicial (Oculto) */
+        display: flex; /* Siempre en DOM pero oculto */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 30px 0;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        gap: 25px;
+        border-bottom: 1px solid #eaeaea;
+        z-index: 999;
+        
+        opacity: 0;
+        visibility: hidden; /* Evita clicks fantasma */
+        transform: translateY(-20px); /* Empieza desplazado arriba */
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Estado ACTIVO (Clase agregada por JS) */
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); /* Se desliza a su lugar */
+    }
+
+    .hamburger { display: block; z-index: 1001; }
+    
+    /* 2. HERO SECTION */
     .hero-split {
         flex-direction: column; text-align: center; 
         padding-top: 40px; height: auto; min-height: auto;
     }
-    
     .hero-text { padding: 0; }
     .hero-text h1 { font-size: 2.5rem; }
     .hero-btns { justify-content: center; }
@@ -318,6 +361,7 @@ img { max-width: 100%; height: auto; display: block; }
     .hero-image { margin-top: 30px; width: 100%; }
     .hero-graphic-container img { max-width: 60%; margin: 0 auto; }
 
+    /* 3. ESTRUCTURA GENERAL MÓVIL */
     .split-layout { flex-direction: column; gap: 40px; }
     .text-content { text-align: center; }
     .feature-list { display: inline-block; text-align: left; }
@@ -326,25 +370,25 @@ img { max-width: 100%; height: auto; display: block; }
     .footer-content { text-align: center; }
     .footer-logo { margin: 0 auto 15px; }
     
-    /* Ajuste Wallet en móvil */
     .wallet-pass { width: 260px; height: 420px; transform: rotateY(0) rotateX(0); }
 
-    /* SOLUCIÓN PORTAFOLIO EN MÓVIL: INFO SIEMPRE VISIBLE */
+    /* 4. SOLUCIÓN PORTAFOLIO EN MÓVIL */
+    /* Tarjeta cambia a fondo negro, texto siempre visible abajo */
     .work-item {
         height: auto; 
         display: flex; 
         flex-direction: column;
-        background-color: #111; /* Fondo oscuro para la tarjeta */
+        background-color: #111; 
     }
 
     .work-image img {
-        height: 250px; /* Altura fija para la imagen */
+        height: 250px; 
         width: 100%;
     }
 
     .work-overlay {
-        position: relative; /* Deja de flotar sobre la imagen */
-        opacity: 1; /* Siempre visible */
+        position: relative; 
+        opacity: 1; 
         background: #111;
         height: auto;
         padding: 25px 15px;
@@ -352,7 +396,7 @@ img { max-width: 100%; height: auto; display: block; }
     }
 
     .work-content {
-        transform: translateY(0); /* Sin animación de entrada */
+        transform: translateY(0); 
         padding: 0;
     }
     
@@ -369,24 +413,4 @@ img { max-width: 100%; height: auto; display: block; }
         text-decoration: none;
         margin-top: 5px;
     }
-}
-
-/* Botón de Idioma en el menú */
-.lang-switch {
-    cursor: pointer;
-    border: 1px solid var(--text-light);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.lang-switch:hover {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
 }
